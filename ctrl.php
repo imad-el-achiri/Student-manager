@@ -52,6 +52,9 @@ class ctrl
 		$cats=$this->model->allCategories();
 		require 'VFormMaterial.php';
 	}
+	public function ClassFormAction(){
+        require "VClassForm.php";
+	}
 	public function addMaterialAction()
 	{
 		$material=array(null,$_POST['intitule'],$_POST['description'],$_POST['type'],$_POST['datedefabrication'],$_POST['prix'],$_POST['categorie']);
@@ -68,6 +71,7 @@ class ctrl
 			case 'verif': $this->verifAction();break;
 			case 'class_add' : $this->ClassAddAction();break;
 			case 'classes' : $this->ClassesAction(); break;
+			case 'class_form' : $this->ClassFormAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}
