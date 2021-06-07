@@ -8,7 +8,7 @@ class model
 	{
 		define('USER','root');
 		define('PASS','0000');
-		$this->db= new PDO('mysql:host=localhost;dbname=Projet_web',USER,PASS);
+		$this->db= new PDO('mysql:host=localhost;dbname=web',USER,PASS);
 	}
 	public function verif($LOGIN){
         $query=$this->db->prepare('select count(*) from users_Al_Khawarizmi where E_mail=? and mdp=?');
@@ -17,7 +17,7 @@ class model
 	}
 	public function ClassAdd($class_info)
 	{
-		$query=$this->db->prepare('insert into classe(nom_classe,semestre_actuel,nb_etud,delegue) values(?,?,?,?)');
+		$query=$this->db->prepare('insert into classe(id_cls,nom_classe,semestre_actuel,nb_etud,delegue) values(null,?,?,?,?)');
 		$query->execute($class_info);
 	}
 	public function infos($email){
@@ -36,7 +36,7 @@ class model
         return $query->fetch();
 	}
 	public function classes(){
-        $query=$this->db->prepare("select nom_classe,delegue,semestre_actuel,nb_etud from classe");
+        $query=$this->db->prepare("select id_cls,nom_classe,delegue,semestre_actuel,nb_etud from classe");
         $query->execute();
         return $query->fetchall();
 	}

@@ -61,6 +61,7 @@
 										<table class="table table-hover table-center mb-0 datatable">
 											<thead>
 												<tr>
+													<th>ID</th>
 													<th>Nom de la classe</th>
 													<th>Délégué(e)</th>
 													<th>Semestre actuelle</th>
@@ -74,13 +75,14 @@
 												echo "<tr>";
 												echo "
 													<td>$c[0]</td>
+													<td>$c[1]</td>
 													<td>
 														<h2>
-															$c[1]
+															$c[2]
 														</h2>
 													</td>
-													<td>$c[2]</td>
 													<td>$c[3]</td>
+													<td>$c[4]</td>
 													<td class='text-right'>
 														<div class='actions'>
 															<a href='edit-department.html' class='btn btn-sm bg-success-light mr-2'>
