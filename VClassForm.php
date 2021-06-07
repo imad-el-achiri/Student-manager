@@ -85,6 +85,19 @@
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
+													<label>Année de création</label>
+													<select class="form-control" name="AC">
+														<option>Selectionner l'année</option>
+														<?php
+															for($i=2016;$i<2116;$i++){
+																echo "<option>$i</option>";
+															}
+														?>
+													  </select>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
 													<label>Nombre des étudiants</label>
 													<input type="number" class="form-control" name="NE">
 												</div>

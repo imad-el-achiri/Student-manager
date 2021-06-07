@@ -43,7 +43,7 @@ class ctrl
 	}
 	public function ClassAddAction()
 	{
-		$class_info=array($_POST['NC'],$_POST['SA'],$_POST['NE'],$_POST['DC']);
+		$class_info=array($_POST['NC']." ".$_POST['AC'],$_POST['SA'],$_POST['NE'],$_POST['DC']);
 		$this->model->ClassAdd($class_info);
 
 	}
