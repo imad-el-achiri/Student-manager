@@ -30,8 +30,8 @@ class model
         $query->execute();
         return $query->fetch();
 	}
-	public function classe($email){
-        $query=$this->db->prepare("select classe from users_Al_Khawarizmi  where E_mail=$email");
+	public function classe($nom_cls){
+        $query=$this->db->prepare("select id_cls from classe  where nom_classe=$nom_cls");
         $query->execute();
         return $query->fetch();
 	}

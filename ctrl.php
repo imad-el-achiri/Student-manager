@@ -47,6 +47,11 @@ class ctrl
 		$this->model->ClassAdd($class_info);
 
 	}
+	public function EdtFormAction(){
+        $cls=$this->model->classes();
+        $l=count($cls);
+        require "VEdtForm.php";
+	}
 	public function formMatAction()
 	{
 		$cats=$this->model->allCategories();
@@ -72,6 +77,7 @@ class ctrl
 			case 'class_add' : $this->ClassAddAction();break;
 			case 'classes' : $this->ClassesAction(); break;
 			case 'class_form' : $this->ClassFormAction(); break;
+			case 'edt_form' : $this->EdtFormAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}
