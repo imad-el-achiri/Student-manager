@@ -52,6 +52,27 @@ class ctrl
         $l=count($cls);
         require "VEdtForm.php";
 	}
+	public function EdtAction(){
+        //$id_cls=$this->model->classe($_POST['cls'])[0];
+	}
+	public function AddEdtAction(){
+        $id_cls=$this->model->classe($_POST['cls'])['id_cls'];
+        $link1=$_POST['link'];
+        echo gettype($id_cls);
+        $link="";
+        $length = strlen($link1);
+        for ($i = 0; $i < $length; $i++){
+            if($link1[$i]=='s' && $link1[$i+1]=='r' && $link1[$i+2]=='c'){
+                while($link1[$i+5]!='"'){
+                    $link=$link.$link1[$i+5];
+                    $i=$i+1;
+                }
+                break;
+            }
+        }
+        $info=array($id_cls,$link);
+        $this->model->AddEdt($info);
+	}
 	public function formMatAction()
 	{
 		$cats=$this->model->allCategories();
@@ -78,6 +99,7 @@ class ctrl
 			case 'classes' : $this->ClassesAction(); break;
 			case 'class_form' : $this->ClassFormAction(); break;
 			case 'edt_form' : $this->EdtFormAction(); break;
+			case 'AddEdt' : $this->AddEdtAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}

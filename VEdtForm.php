@@ -48,7 +48,7 @@
 						
 							<div class="card">
 								<div class="card-body">
-									<form method="POST" action="ctrl.php?action=edt_form">
+									<form method="POST" action="ctrl.php?action=AddEdt">
 										<div class="row">
 											<div class="col-12">
 												<h5 class="form-title"><span>Emploi du temps</span></h5>
@@ -56,13 +56,13 @@
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
 													<label>Lien d'intégration d'Excel/Google sheet</label>
-													<input type="text" class="form-control">
+													<input type="text" class="form-control" name="link">
 												</div>
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
 													<label>Classe</label>
-													<select class="form-control" name="SA">
+													<select class="form-control" name="cls">
 														<option>Sélectionner la classe</option>
 														<?php
 															for($i=0;$i<$l;$i++){

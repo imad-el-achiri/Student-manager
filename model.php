@@ -31,7 +31,7 @@ class model
         return $query->fetch();
 	}
 	public function classe($nom_cls){
-        $query=$this->db->prepare("select id_cls from classe  where nom_classe=$nom_cls");
+        $query=$this->db->prepare("select id_cls from classe  where nom_classe='$nom_cls'");
         $query->execute();
         return $query->fetch();
 	}
@@ -39,6 +39,10 @@ class model
         $query=$this->db->prepare("select id_cls,nom_classe,delegue,semestre_actuel,nb_etud from classe");
         $query->execute();
         return $query->fetchall();
+	}
+	public function AddEdt($info){
+        $query=$this->db->prepare('insert into edt(id,id_cls,chemin) values(null,?,?)');
+		$query->execute($info);
 	}
 	public function allMaterials()
 	{
