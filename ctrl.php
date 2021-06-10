@@ -52,6 +52,11 @@ class ctrl
         $l=count($cls);
         require "VEdtForm.php";
 	}
+	public function ClasseChooseAction(){
+        $cls=$this->model->classes();
+        $l=count($cls);
+        require 'VClsChoose.php';
+	}
 	public function EdtAction(){
         //$id_cls=$this->model->classe($_POST['cls'])[0];
 	}
@@ -72,6 +77,11 @@ class ctrl
         }
         $info=array($id_cls,$link);
         $this->model->AddEdt($info);
+	}
+	public function EdtShowAction(){
+        $id_cls=$this->model->classe($_POST['cls']);
+        $link=$this->model->chemin(array($id_cls[0]));
+        require 'VEdt.php';
 	}
 	public function formMatAction()
 	{
@@ -99,7 +109,9 @@ class ctrl
 			case 'classes' : $this->ClassesAction(); break;
 			case 'class_form' : $this->ClassFormAction(); break;
 			case 'edt_form' : $this->EdtFormAction(); break;
+			case 'Sh_Edt' : $this->EdtShowAction(); break;
 			case 'AddEdt' : $this->AddEdtAction(); break;
+			case 'Cls_Choose' : $this->ClasseChooseAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}

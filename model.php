@@ -41,8 +41,13 @@ class model
         return $query->fetchall();
 	}
 	public function AddEdt($info){
-        $query=$this->db->prepare('insert into edt(id,id_cls,chemin) values(null,?,?)');
+        $query=$this->db->prepare('insert into edt(id_cls,chemin) values(?,?)');
 		$query->execute($info);
+	}
+	public function chemin($id_cls){
+        $query=$this->db->prepare("select chemin from edt where id_cls=?");
+        $query->execute($id_cls);
+        return $query->fetch();
 	}
 	public function allMaterials()
 	{
