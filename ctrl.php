@@ -75,12 +75,13 @@ class ctrl
                 break;
             }
         }
-        $info=array($id_cls,$link);
+        setlocale(LC_TIME, "fr_FR.utf8",'fra');
+        $info=array($id_cls,$link,strftime('%A, %d/%m/%Y à %H:%M'));
         $this->model->AddEdt($info);
 	}
 	public function EdtShowAction(){
         $id_cls=$this->model->classe($_POST['cls']);
-        $link=$this->model->chemin(array($id_cls[0]));
+        $info=$this->model->EdtInfo(array($id_cls[0]));
         require 'VEdt.php';
 	}
 	public function formMatAction()

@@ -41,11 +41,13 @@ class model
         return $query->fetchall();
 	}
 	public function AddEdt($info){
-        $query=$this->db->prepare('insert into edt(id_cls,chemin) values(?,?)');
+        $query=$this->db->prepare('delete from edt where 1=1');
+		$query->execute();
+        $query=$this->db->prepare('insert into edt(id_cls,chemin,upload_date) values(?,?,?)');
 		$query->execute($info);
 	}
-	public function chemin($id_cls){
-        $query=$this->db->prepare("select chemin from edt where id_cls=?");
+	public function EdtInfo($id_cls){
+        $query=$this->db->prepare("select chemin,upload_date from edt where id_cls=?");
         $query->execute($id_cls);
         return $query->fetch();
 	}

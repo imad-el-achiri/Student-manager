@@ -23,7 +23,7 @@
     <body>
 	<?php
 		switch($_GET['n']){
-			case '1' : $action='Sh_Edt';
+			case '1' : $action='Sh_Edt';$title='Emploi du temps';$mini_title='Visualisation';break;
 		}
 	?>	
 		<!-- Main Wrapper -->
@@ -37,10 +37,10 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Add Department</h3>
+								<h3 class="page-title">&nbsp<?php echo"$title"; ?></h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="departments.html">Department</a></li>
-									<li class="breadcrumb-item active">Add Department</li>
+									<!--<li class="breadcrumb-item"><a href="departments.html">Department</a></li>-->
+									<li class="breadcrumb-item active">&nbsp&nbsp<?php echo"$mini_title"; ?></li>
 								</ul>
 							</div>
 						</div>
@@ -53,15 +53,19 @@
 							<div class="card">
 								<div class="card-body">
 									<?php
-										echo '<form method="POST" action="ctrl.php?action='.$action.'">';
+										echo '<form method="POST" action="ctrl.php?action='.$action.'">'
+
+
+
+
+										;
 									?>
 										<div class="row">
 											<div class="col-12">
-												<h5 class="form-title"><span>Emploi du temps</span></h5>
+												<h5 class="form-title"><span>Choix du classe</span></h5>
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
-													<label>Classe</label>
 													<select class="form-control" name="cls">
 														<option>Sélectionner la classe</option>
 														<?php

@@ -21,7 +21,6 @@
         <link rel="stylesheet" href="assets/css/style.css">
     </head>
     <body>
-		
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
         	<?php include "Rep.html";?>
@@ -42,14 +41,34 @@
 						</div>
 					</div>
 					<!-- /Page Header -->
+					<style type="text/css" media="screen">
+		    		.card-body {
+					  position: relative;
+					  overflow: hidden;
+					  width: 100%;
+					  padding-top: 40%; /* 56.25% 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+					}
+
+					/* Then style the iframe to fit in the container div with full height and width */
+					.responsive-iframe {
+					  position: absolute;
+					  top: 0;
+					  left: 0;
+					  bottom: 0;
+					  right: 0;
+					  width: 100%;
+					  height: 100%;
+					  zoom: 0.5;
+					}
+    	</style>
 				
 					<div class="row">
 						<div class="col-sm-12">
-						
 							<div class="card">
 								<div class="card-body">
-									<iframe width="100%" height="100%" frameborder="0" scrolling="no" src=<?php echo"$link";?>></iframe>
+									<iframe class="responsive-iframe" frameborder="0" scrolling="no" src=<?php echo"$info[0]";?>></iframe>
 								</div>
+								<h5>Modifié le : <?php echo"$info[1].";?></h5>
 							</div>
 							
 						</div>					
