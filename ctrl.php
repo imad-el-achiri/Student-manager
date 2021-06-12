@@ -38,6 +38,7 @@ class ctrl
 	public function classesAction()
 	{
 		$cls=$this->model->classes();
+		//print_r($cls);
         require "VClasses.php";
 	}
 	public function ClassAddAction()
@@ -100,6 +101,9 @@ class ctrl
         $class_info=array($_POST['NC']." ".$_POST['AC'],$_POST['SA'],$_POST['NE'],$_POST['DC'],$_GET['id']);
 		$this->model->classe_update($class_info,$AC);
 	}
+	public function ClasseDeleteAction(){
+        $this->model->classe_del($_GET['id']);
+	}
 	public function addMaterialAction()
 	{
 		$material=array(null,$_POST['intitule'],$_POST['description'],$_POST['type'],$_POST['datedefabrication'],$_POST['prix'],$_POST['categorie']);
@@ -123,6 +127,7 @@ class ctrl
 			case 'Cls_Choose' : $this->ClasseChooseAction(); break;
 			case 'class_edit' : $this->ClasseEditAction(); break;
 			case 'class_update' : $this->ClasseUpdateAction(); break;
+			case 'class_delete' : $this->ClasseDeleteAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}

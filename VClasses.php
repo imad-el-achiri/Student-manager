@@ -51,7 +51,9 @@
 						</div>
 					</div>
 					<!-- /Page Header -->
-				
+					<!-- PopUp -->
+						<!-- Modal -->
+					-->
 					<div class="row">
 						<div class="col-sm-12">
 						
@@ -72,7 +74,26 @@
 											<?php
 											echo "<tbody>";
 											foreach ($cls as $c) {
-												echo "<tr>";
+												echo '<div class="modal fade" id="'."exampleModalCenter$c[0]".'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLongTitle">Suppression</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        Etes vous sûre que vous voulez supprimer ce classe?
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+						        <a href="'."ctrl.php?action=class_delete&id=$c[0]".'">'.'<button type="button" class="btn btn-primary">Oui</button></a>';echo "
+						      </div>
+						    </div>
+						  </div>
+						</div>";
+						echo "<tr>";
 												echo "
 													<td>$c[0]</td>
 													<td>$c[1]</td>
@@ -88,7 +109,7 @@
 															<a href='ctrl.php?action=class_edit&id=$c[0]' class='btn btn-sm bg-success-light mr-2'>
 																<i class='fas fa-pen'></i>
 															</a>
-															<a href='#' class='btn btn-sm bg-danger-light'>
+															<a href='ctrl.php?action=class_delete&id=$c[0]' class='btn btn-primary' data-toggle='modal' data-target=\"#exampleModalCenter$c[0]\">
 																<i class='fas fa-trash'></i>
 															</a>
 														</div>

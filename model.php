@@ -63,6 +63,10 @@ class model
             } 
         }
     }
+    public function classe_del($id_cls){
+        $query=$this->db->prepare("delete from classe where id_cls=$id_cls");
+        $query->execute();
+	}
 	public function AddEdt($info){
         $query=$this->db->prepare('delete from edt where 1=1');
 		$query->execute();
