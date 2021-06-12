@@ -104,6 +104,93 @@ class ctrl
 	public function ClasseDeleteAction(){
         $this->model->classe_del($_GET['id']);
 	}
+	public function etudFormAction(){
+		$cls=$this->model->classes();
+        $l=count($cls);
+        require "Vetudiantform.php";
+	}
+	public function etudAddAction()
+	{
+		require "image_compression.php";
+			  //Getting file name
+			  $filename = $_FILES['IMAGE']['tmp_name'];
+			  // Valid extension
+			  $valid_ext = array('png','jpeg','jpg');
+			  // Location
+			  $id=uniqid();
+			  $location = "images/".$id.".jpeg";
+			  $file_name = $id.".jpeg";
+
+			  // file extension
+			  $file_extension = pathinfo($location, PATHINFO_EXTENSION);
+			  $file_extension = strtolower($file_extension);
+			  // Check extension
+			  if(in_array($file_extension,$valid_ext)){
+			    // Compress Image
+			    compressImage($_FILES['IMAGE']['tmp_name'],$location,60);
+			  }
+			  else{
+			    echo "Invalid file type.";
+			  }
+		#$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
+		$etud_info=array($_POST['PR'],$_POST['NOM'],$_POST['GE'],$id_cls,$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
+		//print_r($etud_info);
+		$this->model->etudAdd($etud_info);
+	}	
+
+	public function staffFormAction(){
+		#$cls=$this->model->classes();
+        #$l=count($cls);
+        require "Vstaffform.php";
+	}
+	public function staffAddAction()
+	{
+		require "image_compression.php";
+			  //Getting file name
+			  $filename = $_FILES['IMAGE']['tmp_name'];
+			  // Valid extension
+			  $valid_ext = array('png','jpeg','jpg');
+			  // Location
+			  $id=uniqid();
+			  $location = "images/".$id.".jpeg";
+			  $file_name = $id.".jpeg";
+
+			  // file extension
+			  $file_extension = pathinfo($location, PATHINFO_EXTENSION);
+			  $file_extension = strtolower($file_extension);
+			  // Check extension
+			  if(in_array($file_extension,$valid_ext)){
+			    // Compress Image
+			    compressImage($_FILES['IMAGE']['tmp_name'],$location,60);
+			  }
+			  else{
+			    echo "Invalid file type.";
+			  }
+		#$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
+		$staff_info=array($_POST['FO'],$_POST['PR'],$_POST['NOM'],$_POST['GE'],$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
+		print_r($staff_info);
+		$this->model->staffAdd($staff_info);
+		require "Vdroitform.php";
+	}
+
+	/*public function droitFormAction(){
+        require "Vdroitform.php";
+	}*/
+	public function droitAddAction()
+	{
+		$id_user=$this->model->id_user($_GET['eml']);
+		print_r($id_user);
+		$indx=array('cls','etd','anc','edt','mdl','note');
+		$droit_info=array(isset($_POST['cls']),isset($_POST['etd']),isset($_POST['anc']),isset($_POST['edt']),isset($_POST['mdl']),isset($_POST['note']),$id_user);
+		foreach($indx as $i){
+            if(!isset($_POST[$i])){
+                $_POST[$i]=0;
+            }
+		}
+		$droit_info=array($_POST['cls'],$_POST['etd'],$_POST['anc'],$_POST['edt'],$_POST['mdl'],$_POST['note'],$id_user);
+		print_r($droit_info);
+		//$this->model->droitAdd($droit_info);
+	}	
 	public function addMaterialAction()
 	{
 		$material=array(null,$_POST['intitule'],$_POST['description'],$_POST['type'],$_POST['datedefabrication'],$_POST['prix'],$_POST['categorie']);
@@ -128,6 +215,11 @@ class ctrl
 			case 'class_edit' : $this->ClasseEditAction(); break;
 			case 'class_update' : $this->ClasseUpdateAction(); break;
 			case 'class_delete' : $this->ClasseDeleteAction(); break;
+			case 'Addetud':$this->etudAddAction();break;
+			case 'etud_form' : $this->etudFormAction(); break;
+			case 'Addstaff':$this->staffAddAction();break;
+			case 'staff_form' : $this->staffFormAction(); break;
+			case 'Adddroit':$this->droitAddAction();break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}

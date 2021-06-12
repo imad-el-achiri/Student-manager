@@ -78,6 +78,27 @@ class model
         $query->execute($id_cls);
         return $query->fetch();
 	}
+	public function etudAdd($etud_info)
+	{
+		$query=$this->db->prepare('insert into users_Al_Khawarizmi(fonction,prenom,nom,Genre,id_cls,E_mail,num,adr,photo_personnel) values("Etudiant",?,?,?,?,?,?,?,?)');
+		$query->execute($etud_info);
+	}	
+	public function staffAdd($staff_info)
+	{
+		$query=$this->db->prepare('insert into users_Al_Khawarizmi(fonction,prenom,nom,Genre,id_cls,E_mail,num,adr,photo_personnel) values(?,?,?,?,2,?,?,?,?)');
+		$query->execute($staff_info);
+	}	
+	public function droitAdd($droit_info)
+	{
+		$query=$this->db->prepare('insert into droits(creer_classe,creer_compte,annonce,edt,module,notes,id_user,id_cls) values(?,?,?,?,?,?,?,?,3)');
+		$query->execute($droit_info);
+	}
+	public function id_user($id_email){
+        $query=$this->db->prepare("select id_usr from users_Al_Khawarizmi  where E_mail='$id_email'");
+        $query->execute();
+        print_r($query->fetch());
+        //return $query->fetch();
+	}
 	public function allMaterials()
 	{
 		$query=$this->db->prepare('SELECT `nummat`,`intitule`,materials.`description`,`type`,`datefab`,`prix`,categories.designation FROM materials,categories WHERE materials.`numcat`=categories.`numcat`');
