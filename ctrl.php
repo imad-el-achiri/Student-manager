@@ -32,8 +32,7 @@ class ctrl
             $_SESSION['photo']=$info[5];
             $_SESSION['classe']=$info[6];
             $_SESSION["classes"]=$this->model->classes($_SESSION['email']);
-            //require 'VHomeAdmin.php';
-            require "index.html";
+            require 'VClasses.php';
         }
 	}
 	public function classesAction()
@@ -92,6 +91,10 @@ class ctrl
 	public function ClassFormAction(){
         require "VClassForm.php";
 	}
+	public function ClasseEditAction(){
+        $cls_info=$this->model->one_classe($_GET['id']);
+        require 'VClsEdit.php';
+	}
 	public function addMaterialAction()
 	{
 		$material=array(null,$_POST['intitule'],$_POST['description'],$_POST['type'],$_POST['datedefabrication'],$_POST['prix'],$_POST['categorie']);
@@ -113,6 +116,7 @@ class ctrl
 			case 'Sh_Edt' : $this->EdtShowAction(); break;
 			case 'AddEdt' : $this->AddEdtAction(); break;
 			case 'Cls_Choose' : $this->ClasseChooseAction(); break;
+			case 'class_edit' : $this->ClasseEditAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}

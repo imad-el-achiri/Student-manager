@@ -40,6 +40,11 @@ class model
         $query->execute();
         return $query->fetchall();
 	}
+	public function one_classe($id_cls){
+        $query=$this->db->prepare("select nom_classe,delegue,semestre_actuel,nb_etud from classe where id_cls=$id_cls");
+        $query->execute();
+        return $query->fetch();
+    }
 	public function AddEdt($info){
         $query=$this->db->prepare('delete from edt where 1=1');
 		$query->execute();

@@ -66,7 +66,7 @@
 													<th>Délégué(e)</th>
 													<th>Semestre actuelle</th>
 													<th>Nombre des étudiants</th>
-													<th class="text-right">Action</th>
+													<th> &nbsp&nbsp&nbspAction</th>
 												</tr>
 											</thead>
 											<?php
@@ -85,7 +85,7 @@
 													<td>$c[4]</td>
 													<td class='text-right'>
 														<div class='actions'>
-															<a href='edit-department.html' class='btn btn-sm bg-success-light mr-2'>
+															<a href='ctrl.php?action=class_edit&id=$c[0]' class='btn btn-sm bg-success-light mr-2'>
 																<i class='fas fa-pen'></i>
 															</a>
 															<a href='#' class='btn btn-sm bg-danger-light'>

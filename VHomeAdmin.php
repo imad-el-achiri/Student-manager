@@ -7,6 +7,6 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
-	Hello
+	<?php require 'Rep.html';?>
 </body>
 </html>
