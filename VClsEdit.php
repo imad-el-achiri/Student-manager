@@ -48,15 +48,23 @@
 						
 							<div class="card">
 								<div class="card-body">
-									<form method="POST" action="ctrl.php?action=class_edit">
+									<form method="POST" action="ctrl.php?action=class_update&id=<?php echo $_GET['id']?>">
 										<div class="row">
 											<div class="col-12"> 
 												<h5 class="form-title"><span>Classe Details</span></h5>
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
+													<?php
+													$name=$cls_info['nom_classe'];
+														$l = strlen($name);
+														$name1="";
+														for($i=0;$i<$l-4;$i++){
+															$name1.=$name[$i];
+														}
+													?>
 													<label>Nom de la classe</label>
-													<input type="text" class="form-control" name="NC" value="<?php echo $cls_info['nom_classe']?>">
+													<input type="text" class="form-control" name="NC" value="<?php echo $name1?>">
 												</div>
 											</div>
 											<div class="col-12 col-sm-6">
@@ -69,7 +77,7 @@
 												<div class="form-group">
 													<label>Semestre actuelle</label>
 													<select class="form-control" name="SA">
-														<option>Select semestre</option>
+														<option value="<?php echo $cls_info['semestre_actuel'];?>">Select semestre</option>
 														<option>S1</option>
 														<option>S2</option>
 														<option>S3</option>
@@ -85,7 +93,7 @@
 												<div class="form-group">
 													<label>Année de création</label>
 													<select class="form-control" name="AC">
-														<option>Selectionner l'année</option>
+														<option value="0">Selectionner l'année</option>
 														<?php
 															for($i=2016;$i<2116;$i++){
 																echo "<option>$i</option>";

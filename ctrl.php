@@ -95,6 +95,11 @@ class ctrl
         $cls_info=$this->model->one_classe($_GET['id']);
         require 'VClsEdit.php';
 	}
+	public function ClasseUpdateAction(){
+        $AC=$_POST['AC'];
+        $class_info=array($_POST['NC']." ".$_POST['AC'],$_POST['SA'],$_POST['NE'],$_POST['DC'],$_GET['id']);
+		$this->model->classe_update($class_info,$AC);
+	}
 	public function addMaterialAction()
 	{
 		$material=array(null,$_POST['intitule'],$_POST['description'],$_POST['type'],$_POST['datedefabrication'],$_POST['prix'],$_POST['categorie']);
@@ -117,6 +122,7 @@ class ctrl
 			case 'AddEdt' : $this->AddEdtAction(); break;
 			case 'Cls_Choose' : $this->ClasseChooseAction(); break;
 			case 'class_edit' : $this->ClasseEditAction(); break;
+			case 'class_update' : $this->ClasseUpdateAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}

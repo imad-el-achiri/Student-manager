@@ -45,6 +45,24 @@ class model
         $query->execute();
         return $query->fetch();
     }
+    public function classe_update($info,$AC){
+        if($AC==0 or $AC=='0'){
+            $query=$this->db->prepare("update classe set semestre_actuel='$info[1]',nb_etud=$info[2],delegue='$info[3]' where id_cls=$info[4]");
+            $query->execute();
+            if (!$query) {
+                echo "\nPDO::errorInfo():\n";
+                print_r($this->db->errorInfo());
+            }
+        }
+        else{
+            $query=$this->db->prepare("update classe set nom_classe=?,semestre_actuel=?,nb_etud=?,delegue=? where id_cls=?");
+            $query->execute($info);
+            if (!$query) {
+                echo "\nPDO::errorInfo():\n";
+                print_r($this->db->errorInfo());
+            } 
+        }
+    }
 	public function AddEdt($info){
         $query=$this->db->prepare('delete from edt where 1=1');
 		$query->execute();
