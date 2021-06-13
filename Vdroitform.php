@@ -108,7 +108,7 @@
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
-									<form method="POST" action="ctrl.php?action=Adddroit&eml=<?php echo $_POST["EM"];?> enctype="multipart/form-data">
+									<form method="POST" action="ctrl.php?action=Adddroit&eml=<?php echo $_POST['EM'];?>" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-12">
 												<h5 class="form-title"><span>Les droits du personnel</span></h5>

@@ -168,7 +168,7 @@ class ctrl
 			  }
 		#$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
 		$staff_info=array($_POST['FO'],$_POST['PR'],$_POST['NOM'],$_POST['GE'],$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
-		print_r($staff_info);
+		//print_r($staff_info);
 		$this->model->staffAdd($staff_info);
 		require "Vdroitform.php";
 	}
@@ -179,7 +179,6 @@ class ctrl
 	public function droitAddAction()
 	{
 		$id_user=$this->model->id_user($_GET['eml']);
-		print_r($id_user);
 		$indx=array('cls','etd','anc','edt','mdl','note');
 		$droit_info=array(isset($_POST['cls']),isset($_POST['etd']),isset($_POST['anc']),isset($_POST['edt']),isset($_POST['mdl']),isset($_POST['note']),$id_user);
 		foreach($indx as $i){
@@ -187,9 +186,8 @@ class ctrl
                 $_POST[$i]=0;
             }
 		}
-		$droit_info=array($_POST['cls'],$_POST['etd'],$_POST['anc'],$_POST['edt'],$_POST['mdl'],$_POST['note'],$id_user);
-		print_r($droit_info);
-		//$this->model->droitAdd($droit_info);
+		$droit_info=array($_POST['cls'],$_POST['etd'],$_POST['anc'],$_POST['edt'],$_POST['mdl'],$_POST['note'],$id_user[0]);
+		$this->model->droitAdd($droit_info);
 	}	
 	public function addMaterialAction()
 	{
