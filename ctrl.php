@@ -190,7 +190,13 @@ class ctrl
 		$this->model->droitAdd($droit_info);
 	}
 	public function staffViewAction(){
-      $stf=$this->model->AllStaff();
+      $v=$_GET['v'];
+      if($v==1){
+        $stf=$this->model->AllStudents();
+      }
+      if($v==2){
+        $stf=$this->model->AllStaff();
+      }
       require 'VStaff.php';
 	}
 	public function UserDeleteAction(){

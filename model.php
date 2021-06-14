@@ -107,6 +107,11 @@ class model
         $query->execute();
         return $query->fetchall();
 	}
+	public function AllStudents(){
+        $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='Etudiant'");
+        $query->execute();
+        return $query->fetchall();
+	}
 	public function UserDelete($id){
         $query=$this->db->prepare("delete from users_Al_Khawarizmi where id_usr=$id");
         $query->execute();

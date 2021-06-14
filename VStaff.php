@@ -56,7 +56,9 @@
 													<th>Prénom</th>
 													<th>Genre</th>
 													<th>E-mail</th>
-													<th>Fonction</th>
+													<?php
+														if($v==2) echo "<th>Fonction</th>";
+													?>
 													<th>N° de téléphone</th>
 													<th>Adresse</th>
 													<th> &nbsp&nbsp&nbspAction</th>
@@ -97,9 +99,9 @@
 													if($s[8]=='M') echo '<td>Mâle</td>';
 													if($s[8]=='F') echo '<td>Femelle</td>';
 													echo "
-													<td><a href=".'"mailto:'."$s[1]".'">'."$s[1]</a></td>
-													<td>$s[4]</td>
-													<td><a href=".'"tel:'."$s[9]".'">'."$s[9]</a></td>
+													<td><a href=".'"mailto:'."$s[1]".'">'."$s[1]</a></td>";
+													if($v==2) echo "<td>$s[4]</td>";
+													echo "<td><a href=".'"tel:'."$s[9]".'">'."$s[9]</a></td>
 													<td>$s[10]</td>
 													<td class='text-right'>
 														<div class='actions'>
