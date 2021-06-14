@@ -102,6 +102,15 @@ class model
         //print_r($query->fetch());
         return $a;
 	}
+	public function AllStaff(){
+        $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof' or fonction='Responsable'");
+        $query->execute();
+        return $query->fetchall();
+	}
+	public function UserDelete($id){
+        $query=$this->db->prepare("delete from users_Al_Khawarizmi where id_usr=$id");
+        $query->execute();
+	}
 	public function allMaterials()
 	{
 		$query=$this->db->prepare('SELECT `nummat`,`intitule`,materials.`description`,`type`,`datefab`,`prix`,categories.designation FROM materials,categories WHERE materials.`numcat`=categories.`numcat`');

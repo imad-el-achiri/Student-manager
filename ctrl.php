@@ -188,7 +188,15 @@ class ctrl
 		}
 		$droit_info=array($_POST['cls'],$_POST['etd'],$_POST['anc'],$_POST['edt'],$_POST['mdl'],$_POST['note'],$id_user[0]);
 		$this->model->droitAdd($droit_info);
-	}	
+	}
+	public function staffViewAction(){
+      $stf=$this->model->AllStaff();
+      require 'VStaff.php';
+	}
+	public function UserDeleteAction(){
+        $id=$_GET['id_user'];
+        $this->model->UserDelete($id);
+	}
 	public function addMaterialAction()
 	{
 		$material=array(null,$_POST['intitule'],$_POST['description'],$_POST['type'],$_POST['datedefabrication'],$_POST['prix'],$_POST['categorie']);
@@ -218,6 +226,8 @@ class ctrl
 			case 'Addstaff':$this->staffAddAction();break;
 			case 'staff_form' : $this->staffFormAction(); break;
 			case 'Adddroit':$this->droitAddAction();break;
+			case 'staff_view' : $this->staffViewAction(); break;
+			case 'user_delete' : $this->UserDeleteAction(); break;
 			case 'add':$this->addMaterialAction();break;
 		}
 	}
