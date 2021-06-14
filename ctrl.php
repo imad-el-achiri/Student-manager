@@ -132,7 +132,7 @@ class ctrl
 			  else{
 			    echo "Invalid file type.";
 			  }
-		#$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
+		$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
 		$etud_info=array($_POST['PR'],$_POST['NOM'],$_POST['GE'],$id_cls,$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
 		//print_r($etud_info);
 		$this->model->etudAdd($etud_info);
