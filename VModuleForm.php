@@ -50,47 +50,26 @@
 						
 							<div class="card">
 								<div class="card-body">
-									<form method="POST" action="ctrl.php?action=class_add">
+									<form method="POST" action="ctrl.php?action=AddModule">
 										<div class="row">
 											<div class="col-12"> 
 												<h5 class="form-title"><span>Classe Details</span></h5>
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
-													<label>Nom de la classe</label>
-													<input type="text" class="form-control" name="NC">
+													<label>Nom du module</label>
+													<input type="text" class="form-control" name="nom">
 												</div>
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
-													<label>délégué(e) de la Classe</label>
-													<input type="text" class="form-control" name="DC">
-												</div>
-											</div>
-											<div class="col-12 col-sm-6">
-												<div class="form-group">
-													<label>Semestre actuelle</label>
-													<select class="form-control" name="SA">
-														<option>Select semestre</option>
-														<option>S1</option>
-														<option>S2</option>
-														<option>S3</option>
-														<option>S4</option>
-														<option>S5</option>
-														<option>S6</option>
-														<option>M1</option>
-														<option>M2</option>
-													  </select>
-												</div>
-											</div>
-											<div class="col-12 col-sm-6">
-												<div class="form-group">
-													<label>Année de création</label>
-													<select class="form-control" name="AC">
-														<option>Selectionner l'année</option>
+													<label>Professeur</label>
+													<select class="form-control" name="prf">
+														<option>Sélectionner le prof. de ce module</option>
 														<?php
-															for($i=2016;$i<2116;$i++){
-																echo "<option>$i</option>";
+															for($i=0;$i<$l2;$i++){
+																$p=$prf[$i];
+																echo "<option>".$p['id_usr'].".".$p['nom']." ".$p['prenom']."</option>";
 															}
 														?>
 													  </select>
@@ -98,8 +77,15 @@
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
-													<label>Nombre des étudiants</label>
-													<input type="number" class="form-control" name="NE">
+													<label>Classe</label>
+													<select class="form-control" name="cls">
+														<option>Sélectionner la classe</option>
+														<?php
+															for($i=0;$i<$l;$i++){
+																echo "<option>".$cls[$i]['nom_classe']."</option>";
+															}
+														?>
+													  </select>
 												</div>
 											</div>
 											<div class="col-12">

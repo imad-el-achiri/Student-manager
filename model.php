@@ -102,8 +102,23 @@ class model
         //print_r($query->fetch());
         return $a;
 	}
-	public function AllStaff(){
-        $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof' or fonction='Responsable'");
+	public function AllUsers($n){
+        switch($n){
+            case 1:
+                $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='Etudiant'");break;
+            case 2:
+                $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof' or fonction='Responsable'");break;
+            case 3 :
+                $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof'");break;
+            /*case 4 :
+                $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof' or fonction='Responsable'");break;*/
+        }
+        //$query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof' or fonction='Responsable'");
+        $query->execute();
+        return $query->fetchall();
+	}
+	/*public function AllProfs(){
+        $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='prof'");
         $query->execute();
         return $query->fetchall();
 	}
@@ -111,7 +126,7 @@ class model
         $query=$this->db->prepare("select * from users_Al_Khawarizmi where fonction='Etudiant'");
         $query->execute();
         return $query->fetchall();
-	}
+	}*/
 	public function UserDelete($id){
         $query=$this->db->prepare("delete from users_Al_Khawarizmi where id_usr=$id");
         $query->execute();
@@ -128,7 +143,15 @@ class model
 		$query->execute();
 		return $query->fetchAll();
 	}
-
+    public function addModule($info){
+        $query=$this->db->prepare("insert into module(nom_module,id_prof,id_cls) values('',?,?,?)");
+        $query->execute($info);
+    }
+    public function AllModules(){
+        $query=$this->db->prepare('SELECT * FROM module');
+		$query->execute();
+		return $query->fetchAll();
+    }
 	public function addMaterial($material)
 	{
 		$query=$this->db->prepare('insert into materials values(?,?,?,?,?,?,?)');

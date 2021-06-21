@@ -35,7 +35,7 @@ class ctrl
             require 'VClasses.php';
         }
 	}
-	public function classesAction()
+	public function ClassesAction()
 	{
 		$cls=$this->model->classes();
 		//print_r($cls);
@@ -191,12 +191,7 @@ class ctrl
 	}
 	public function staffViewAction(){
       $v=$_GET['v'];
-      if($v==1){
-        $stf=$this->model->AllStudents();
-      }
-      if($v==2){
-        $stf=$this->model->AllStaff();
-      }
+      $stf=$this->model->AllUsers($v);
       require 'VStaff.php';
 	}
 	public function UserDeleteAction(){
@@ -209,6 +204,21 @@ class ctrl
 		$this->model->addMaterial($material);
 		header('location:ctrl.php?action=allmat');
 	} 
+	public function moduleFormAction(){
+        $cls=$this->model->classes();
+        $l=count($cls);
+        $prf=$this->model->AllUsers(3);
+        $l2=count($prf);
+        require 'VModuleForm.php';
+	}
+	public function moduleAddAction(){
+        $infos=array($_POST['nom'],$_POST['prf'],$_POST['cls']);
+        $this->model->addModule($infos);
+	}
+	public function ModulesViewAction(){
+        $mdl=$this->model->AllModules();
+        require 'VModules.php';
+	}
 	public function action()
 	{
 		$action="login";
@@ -235,6 +245,8 @@ class ctrl
 			case 'staff_view' : $this->staffViewAction(); break;
 			case 'user_delete' : $this->UserDeleteAction(); break;
 			case 'add':$this->addMaterialAction();break;
+			case 'AddModule':$this->moduleAddAction();break;
+			case 'Module_form':$this->moduleFormAction();break;
 		}
 	}
 }
