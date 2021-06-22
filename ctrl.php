@@ -241,6 +241,10 @@ class ctrl
         $l2=count($prf);
         require 'VModuleEdit.php';
 	}
+	public function ModuleUpdateAction(){
+        $infos=array($_POST['nom'],$_POST['prf'],$_POST['cls']);
+        $this->model->UpdateModule($infos,$_GET['id']);
+	}
 	public function action()
 	{
 		$action="login";
@@ -272,6 +276,7 @@ class ctrl
 			case 'Module_view':$this->ModulesViewAction();break;
 			case 'Module_delete':$this->ModuleDelAction();break;
 			case 'Module_edit':$this->ModuleEditAction();break;
+			case 'UpdateModule':$this->ModuleUpdateAction();break;
 		}
 	}
 }

@@ -50,7 +50,7 @@
 						
 							<div class="card">
 								<div class="card-body">
-									<form method="POST" action="ctrl.php?action=AddModule">
+									<form method="POST" <?php echo "action=ctrl.php?action=UpdateModule&id=".$id;?>>
 										<div class="row">
 											<div class="col-12"> 
 												<h5 class="form-title"><span>Modification du module</span></h5>

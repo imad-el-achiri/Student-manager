@@ -175,6 +175,13 @@ class model
 		$query=$this->db->prepare('insert into materials values(?,?,?,?,?,?,?)');
 		$query->execute($material);
 	}
+	public function UpdateModule($info,$id){
+        $query=$this->db->prepare("update module set nom_module=?,id_prof=?,id_cls=? where id_module=$id");
+        echo "$query <br>";
+        $query->execute($info);
+        echo "\nPDO::errorInfo():\n";
+        print_r($this->db->errorInfo());
+	}
 }
 
 ?>
