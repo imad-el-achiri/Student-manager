@@ -165,6 +165,11 @@ class model
 		$query->execute();
 		return $query->fetchAll();
     }
+    public function OneModule($id){
+        $query=$this->db->prepare("select * from module where id_module=$id");
+        $query->execute();
+        return $query->fetch();
+    }
 	public function addMaterial($material)
 	{
 		$query=$this->db->prepare('insert into materials values(?,?,?,?,?,?,?)');

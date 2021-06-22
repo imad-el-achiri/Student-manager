@@ -102,7 +102,7 @@
 													<td>$m[3]</td>
 													<td class='text-right'>
 														<div class='actions'>
-															<a href='ctrl.php?action=class_edit&id=$m[0]' class='btn btn-sm bg-success-light mr-2'>
+															<a href='ctrl.php?action=Module_edit&id=$m[0]' class='btn btn-sm bg-success-light mr-2'>
 																<i class='fas fa-pen'></i>
 															</a>
 															<a href='ctrl.php?action=Module_delete&id=$m[0]' class='btn btn-primary' data-toggle='modal' data-target=\"#exampleModalCenter$m[0]\">
