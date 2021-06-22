@@ -217,7 +217,17 @@ class ctrl
 	}
 	public function ModulesViewAction(){
         $mdl=$this->model->AllModules();
+        $l=count($mdl);
+        for($i=0;$i<$l;$i++){
+			$mdl[$i][3]=$this->model->one_classe($mdl[$i][3])['nom_classe'];
+			$pr_inf=$this->model->OneUser($mdl[$i][2]);
+			$mdl[$i][2]=$pr_inf['nom'].' '.$pr_inf['prenom'];
+        }
         require 'VModules.php';
+	}
+	public function ModuleDelAction(){
+        $id=$_GET[''];
+        $this->model->delModule($id);
 	}
 	public function action()
 	{
@@ -247,6 +257,8 @@ class ctrl
 			case 'add':$this->addMaterialAction();break;
 			case 'AddModule':$this->moduleAddAction();break;
 			case 'Module_form':$this->moduleFormAction();break;
+			case 'Module_view':$this->ModulesViewAction();break;
+			case 'Module_delete':$this->ModuleDelAction();break;
 		}
 	}
 }

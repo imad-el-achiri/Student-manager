@@ -69,7 +69,7 @@
 														<?php
 															for($i=0;$i<$l2;$i++){
 																$p=$prf[$i];
-																echo "<option>".$p['id_usr'].".".$p['nom']." ".$p['prenom']."</option>";
+																echo '<option value="'.$p['id_usr'].'">'.$p['id_usr'].".".$p['nom']." ".$p['prenom']."</option>";
 															}
 														?>
 													  </select>
@@ -82,7 +82,8 @@
 														<option>Sélectionner la classe</option>
 														<?php
 															for($i=0;$i<$l;$i++){
-																echo "<option>".$cls[$i]['nom_classe']."</option>";
+																$c=$cls[$i];
+																echo '<option value="'.$c['id_cls'].'">'.$c['nom_classe']."</option>";
 															}
 														?>
 													  </select>

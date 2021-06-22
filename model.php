@@ -127,6 +127,11 @@ class model
         $query->execute();
         return $query->fetchall();
 	}*/
+	public function OneUser($id){
+        $query=$this->db->prepare("select * from users_Al_Khawarizmi where id_usr=$id");
+        $query->execute();
+        return $query->fetch();
+	}
 	public function UserDelete($id){
         $query=$this->db->prepare("delete from users_Al_Khawarizmi where id_usr=$id");
         $query->execute();
@@ -144,8 +149,16 @@ class model
 		return $query->fetchAll();
 	}
     public function addModule($info){
-        $query=$this->db->prepare("insert into module(nom_module,id_prof,id_cls) values('',?,?,?)");
+        $query=$this->db->prepare("insert into module(nom_module,id_prof,id_cls) values(?,?,?)");
         $query->execute($info);
+        if (!$query) {
+                echo "\nPDO::errorInfo():\n";
+                print_r($this->db->errorInfo());
+            } 
+    }
+    public function delModule($id){
+        $query=$this->db->prepare("delete from module where id_module=$id");
+        $query->execute();
     }
     public function AllModules(){
         $query=$this->db->prepare('SELECT * FROM module');

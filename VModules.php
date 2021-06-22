@@ -62,17 +62,16 @@
 											<thead>
 												<tr>
 													<th>ID</th>
-													<th>Nom de la classe</th>
-													<th>Délégué(e)</th>
-													<th>Semestre actuelle</th>
-													<th>Nombre des étudiants</th>
+													<th>Nom du module</th>
+													<th>Professeur</th>
+													<th>Classe</th>
 													<th> &nbsp&nbsp&nbspAction</th>
 												</tr>
 											</thead>
 											<?php
 											echo "<tbody>";
-											foreach ($cls as $c) {
-												echo '<div class="modal fade" id="'."exampleModalCenter$c[0]".'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+											foreach ($mdl as $m) {
+												echo '<div class="modal fade" id="'."exampleModalCenter$m[0]".'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 						  <div class="modal-dialog modal-dialog-centered" role="document">
 						    <div class="modal-content">
 						      <div class="modal-header">
@@ -86,28 +85,27 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-						        <a href="'."ctrl.php?action=class_delete&id=$c[0]".'">'.'<button type="button" class="btn btn-primary">Oui</button></a>';echo "
+						        <a href="'."ctrl.php?action=Module_delete&id=$m[0]".'">'.'<button type="button" class="btn btn-primary">Oui</button></a>';echo "
 						      </div>
 						    </div>
 						  </div>
 						</div>";
 						echo "<tr>";
 												echo "
-													<td>$c[0]</td>
-													<td>$c[1]</td>
+													<td>$m[0]</td>
+													<td>$m[1]</td>
 													<td>
 														<h2>
-															$c[2]
+															$m[2]
 														</h2>
 													</td>
-													<td>$c[3]</td>
-													<td>$c[4]</td>
+													<td>$m[3]</td>
 													<td class='text-right'>
 														<div class='actions'>
-															<a href='ctrl.php?action=class_edit&id=$c[0]' class='btn btn-sm bg-success-light mr-2'>
+															<a href='ctrl.php?action=class_edit&id=$m[0]' class='btn btn-sm bg-success-light mr-2'>
 																<i class='fas fa-pen'></i>
 															</a>
-															<a href='ctrl.php?action=class_delete&id=$c[0]' class='btn btn-primary' data-toggle='modal' data-target=\"#exampleModalCenter$c[0]\">
+															<a href='ctrl.php?action=Module_delete&id=$m[0]' class='btn btn-primary' data-toggle='modal' data-target=\"#exampleModalCenter$m[0]\">
 																<i class='fas fa-trash'></i>
 															</a>
 														</div>
