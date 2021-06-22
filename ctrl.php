@@ -235,6 +235,9 @@ class ctrl
         $tmp=$this->model->OneUser($mdl['id_prof']);
         $nom_prof=$tmp['nom'].' '.$tmp['prenom'];
         $nom_cls=$this->model->one_classe($mdl['id_cls'])['nom_classe'];
+        $nom_module=$mdl['nom_module'];
+        $id_prof=$mdl[2];
+        $id_cls=$mdl[3];
         $cls=$this->model->classes();
         $l=count($cls);
         $prf=$this->model->AllUsers(3);

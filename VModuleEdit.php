@@ -58,14 +58,14 @@
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
 													<label>Nom du module</label>
-													<input type="text" class="form-control" name="nom" value=<?php echo $mdl[1];?>>
+													<input type="text" class="form-control" name="nom" <?php echo "value=\"$nom_module\"";?>>
 												</div>
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
 													<label>Professeur</label>
 													<select class="form-control" name="prf">
-														<option <?php echo 'value="$nom_prof"';?>>Sélectionner le prof. de ce module</option>
+														<option <?php echo "value=\"$id_prof\"";?>>Sélectionner le prof. de ce module</option>
 														<?php
 															for($i=0;$i<$l2;$i++){
 																$p=$prf[$i];
@@ -79,7 +79,7 @@
 												<div class="form-group">
 													<label>Classe</label>
 													<select class="form-control" name="cls">
-														<option <?php echo 'value="$nom_cls"';?>>Sélectionner la classe</option>
+														<option <?php echo "value=\"$id_cls\"";?>>Sélectionner la classe</option>
 														<?php
 															for($i=0;$i<$l;$i++){
 																$c=$cls[$i];

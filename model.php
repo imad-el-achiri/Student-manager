@@ -176,11 +176,12 @@ class model
 		$query->execute($material);
 	}
 	public function UpdateModule($info,$id){
+        $query=$this->db->prepare("SET foreign_key_checks = 0");
+        $query->execute();
         $query=$this->db->prepare("update module set nom_module=?,id_prof=?,id_cls=? where id_module=$id");
-        echo "$query <br>";
         $query->execute($info);
-        echo "\nPDO::errorInfo():\n";
-        print_r($this->db->errorInfo());
+        $query=$this->db->prepare("SET foreign_key_checks = 1");
+        $query->execute();
 	}
 }
 
