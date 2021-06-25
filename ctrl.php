@@ -248,6 +248,106 @@ class ctrl
         $infos=array($_POST['nom'],$_POST['prf'],$_POST['cls']);
         $this->model->UpdateModule($infos,$_GET['id']);
 	}
+	public function userEditAction(){
+		$v=$_GET['v'];
+        $user_info=$this->model->one_user($_GET['id']);
+		#$className=$this->model->className($etud_info['id_cls']);
+		#$etud_info=array_merge ($info,$className);
+		$cls=$this->model->classes();
+        $l=count($cls);
+        require 'VuserEdit.php';
+	}
+	public function userUpdateAction(){
+		$file_name=0;
+		$id_user=$_GET['id'];
+		#$fct=$_POST['FO'];
+		
+		$v=$_GET['v'];
+		#var_dump(isset($_FILES['IMAGE']['name']));
+		#print_r($_FILES['IMAGE']['name']);
+		#var_dump(!isset($_FILES['IMAGE']['name']));
+
+		if($_FILES['IMAGE']['size']!=0)
+		{
+			require "image_compression.php";
+			  $filename = $_FILES['IMAGE']['tmp_name'];
+ 			  $valid_ext = array('png','jpeg','jpg');
+ 			  $id=uniqid();
+			  $location = "images/".$id.".jpeg";
+			  $file_name = $id.".jpeg";
+ 			  $file_extension = pathinfo($location, PATHINFO_EXTENSION);
+			  $file_extension = strtolower($file_extension);
+
+ 			  if(in_array($file_extension,$valid_ext)){
+ 			    compressImage($_FILES['IMAGE']['tmp_name'],$location,60);}
+			  else{ echo "Invalid file type.";}
+			}
+		if($v==1){
+			$cls=$_POST['cls'];
+		$user_info=array($_POST['PR'],$_POST['NOM'],$_POST['GE'],$_POST['cls'],$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
+		$this->model->user_update($user_info,$v,$id_user);}
+		if($v==2){
+		$user_info=array($_POST['PR'],$_POST['NOM'],$_POST['GE'],$_POST['FO'],$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
+		$this->model->user_update($user_info,$v,$id_user);}
+
+		#$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
+		#$this->model->classe_update($user_info,$IMAGES,$fct,$cls);
+	}
+	public function ancAddAction()
+	{
+		require "image_compression.php";
+			  //Getting file name
+			  $filename = $_FILES['IMAGE']['tmp_name'];
+			  // Valid extension
+			  $valid_ext = array('png','jpeg','jpg');
+			  // Location
+			  $id=uniqid();
+			  $location = "images/".$id.".jpeg";
+			  $file_name = $id.".jpeg";
+
+			  // file extension
+			  $file_extension = pathinfo($location, PATHINFO_EXTENSION);
+			  $file_extension = strtolower($file_extension);
+			  // Check extension
+			  if(in_array($file_extension,$valid_ext)){
+			    //Compress Image
+			    compressImage($_FILES['IMAGE']['tmp_name'],$location,60);
+			  }
+			  else{
+			    echo "Invalid file type.";
+			  }
+		$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
+		$anc_info=array($_POST['OB'],$id_cls,$_POST['CO'],$file_name);
+		print_r($anc_info);
+		$this->model->ancAdd($anc_info);
+	}
+	public function ancFormAction(){
+		$anc=$this->model->annonces();
+        $l=count($anc);
+        require "Vancform.php";
+	}
+	public function ancshowAction(){
+		$anc=$this->model->annonces();
+        $l=count($anc);
+	        print_r($anc[0]);
+
+        require "Vannonce.php";
+	}	
+	public function absform2Action()
+	{
+		$users=$this->model->AllStudents();
+		$l=count($users);
+		$timeinfo=array($_POST['dtabs'],$_POST['debut'],$_POST['fin']);
+        require "Vabsenceform2.php";
+	}
+	public function absform1Action()
+	{
+		$modules=$this->model->moduleduprof($_SESSION['id_usr']);
+		$m=count($modules);
+        require "Vabsenceform1.php";          
+        print_r($_SESSION['id_usr']);
+
+	}
 	public function action()
 	{
 		$action="login";
@@ -268,12 +368,29 @@ class ctrl
 			case 'class_delete' : $this->ClasseDeleteAction(); break;
 			case 'Addetud':$this->etudAddAction();break;
 			case 'etud_form' : $this->etudFormAction(); break;
+			//user edit
+			//user update
+			case 'user_edit' : $this->userEditAction(); break;
+			case 'user_update' : $this->userUpdateAction(); break;
+			//a
 			case 'Addstaff':$this->staffAddAction();break;
 			case 'staff_form' : $this->staffFormAction(); break;
 			case 'Adddroit':$this->droitAddAction();break;
+			//addanc
+			//anc form
+			//anc show
+			case 'Addanc':$this->ancAddAction();break;
+			case 'anc_form' : $this->ancFormAction(); break;
+			case 'ancshow' : $this->ancshowAction(); break;
+			//a
 			case 'staff_view' : $this->staffViewAction(); break;
 			case 'user_delete' : $this->UserDeleteAction(); break;
-			case 'add':$this->addMaterialAction();break;
+			//etudiants
+			//time info
+			//profile
+			case 'etudiants' : $this->absform2Action(); break;
+			case 'timeinfo' : $this->absform1Action(); break;
+			//a
 			case 'AddModule':$this->moduleAddAction();break;
 			case 'Module_form':$this->moduleFormAction();break;
 			case 'Module_view':$this->ModulesViewAction();break;
