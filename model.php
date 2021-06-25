@@ -212,11 +212,11 @@ $query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\", pr
 }
     public function ancAdd($anc_info)
 	{
-		$query=$this->db->prepare('insert into annonce(objet,id_cls,annonce,photo) values(?,?,?,?)');
+		$query=$this->db->prepare('insert into Annonce(objet,id_cls,annonce,photo) values(?,?,?,?)');
 		$query->execute($anc_info);
 	}
 	public function annonces(){
-        $query=$this->db->prepare("select * from annonce");
+        $query=$this->db->prepare("select * from Annonce");
         $query->execute();
         return $query->fetchall();
 	}

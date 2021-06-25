@@ -6,25 +6,25 @@
         <title>Preskool - Holiday</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" href="./html-template/assets/img/favicon.png">
 	
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./html-template/assets/plugins/bootstrap/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+		<link rel="stylesheet" href="./html-template/assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="./html-template/assets/plugins/fontawesome/css/all.min.css">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="./html-template/assets/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Full Calander CSS -->
-        <link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar.min.css">
+        <link rel="stylesheet" href="./html-template/assets/plugins/fullcalendar/fullcalendar.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="./html-template/assets/css/style.css">
     </head>
     <body>
 	
@@ -41,10 +41,10 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Events</h3>
+								<h3 class="page-title">Annonces</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Events</li>
+									<li class="breadcrumb-item active">Annonces</li>
 								</ul>
 							</div>
 							<div class="col-auto text-right float-right ml-auto">
@@ -81,7 +81,6 @@
                     width: 300px;
                     height: 200px;</style> -->
                     <table border="0" align="center">
-                    <tr><th colspan="3">Annonces</th></tr>
 					          <?php 
                     $cards_color = array('secondary','danger', 'warning' ,'info', 'dark');
                     $count=0;
@@ -144,9 +143,6 @@
 			
 			
 				<!-- Footer -->
-				<footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer>
 				<!-- /Footer -->
 				
 			</div>
@@ -156,26 +152,26 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <script src="./html-template/assets/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./html-template/assets/js/popper.min.js"></script>
+        <script src="./html-template/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="./html-template/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 		
 		<!-- Datetimepicker JS -->
-		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="./html-template/assets/js/moment.min.js"></script>
+		<script src="./html-template/assets/js/bootstrap-datetimepicker.min.js"></script>
 		
 		<!-- Full Calendar JS -->
-        <script src="assets/js/jquery-ui.min.js"></script>
-        <script src="assets/plugins/fullcalendar/fullcalendar.min.js"></script>
-        <script src="assets/plugins/fullcalendar/jquery.fullcalendar.js"></script>
+        <script src="./html-template/assets/js/jquery-ui.min.js"></script>
+        <script src="./html-template/assets/plugins/fullcalendar/fullcalendar.min.js"></script>
+        <script src="./html-template/assets/plugins/fullcalendar/jquery.fullcalendar.js"></script>
 		
 		<!-- Custom JS -->
-		<script  src="assets/js/script.js"></script>
+		<script  src="./html-template/assets/js/script.js"></script>
 		
     </body>
 </html>

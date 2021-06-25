@@ -322,8 +322,9 @@ class ctrl
 		$this->model->ancAdd($anc_info);
 	}
 	public function ancFormAction(){
-		$anc=$this->model->annonces();
-        $l=count($anc);
+		//$anc=$this->model->annonces();
+		$cls=$this->model->classes();
+        $l=count($cls);
         require "Vancform.php";
 	}
 	public function ancshowAction(){
