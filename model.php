@@ -26,7 +26,7 @@ class model
         return $query->fetch();
 	}
 	public function droits($email){
-        $query=$this->db->prepare("select * from droits where id_user='$email'");
+        $query=$this->db->prepare("select * from droits where id_usr='$email'");
         $query->execute();
         return $query->fetch();
 	}
@@ -224,6 +224,13 @@ $query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\", pr
         $query=$this->db->prepare("select * from module where id_usr=?");
         $query->execute($id);
         return $query->fetchall();
+    }
+    public function resetpass($pass_info)
+    {
+        $query=$this->db->prepare("update users_al_khawarizmi set mdp=? where id_usr=?");
+        
+        
+        $query->execute($pass_info);
     }
 }
 

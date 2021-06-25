@@ -23,15 +23,16 @@ class ctrl
         }
         else{
             session_start();
-            $_SESSION['email']=$_POST['username'];
-            $_SESSION['pass']=$_POST["pass"];
-            $info=$this->model->infos($_SESSION['email']);
-            $_SESSION['nom']=$info[1];
-            $_SESSION['prenom']=$info[2];
-            $_SESSION['fct']=$info[3];
-            $_SESSION['photo']=$info[5];
-            $_SESSION['classe']=$info[6];
-            $_SESSION["classes"]=$this->model->classes($_SESSION['email']);
+            //$_SESSION['email']=$_POST['username'];
+            //$_SESSION['pass']=$_POST["pass"];
+            $info=$this->model->infos($_POST['username']);
+            $droits=$this->model->droits($info['id_usr']);
+            echo $droits;
+            echo $info['id_usr'];
+            $_SESSION['info']=$info;
+            $_SESSION['droits']=$droits;
+            //print_r($_SESSION['info']);
+            //print_r($_SESSION['droits']);
             require 'VClasses.php';
         }
 	}
@@ -349,6 +350,16 @@ class ctrl
         print_r($_SESSION['id_usr']);
 
 	}
+	public function profileAction(){
+        session_start();
+        require 'Vprofile.php';
+    }
+    public function resetpassAction(){
+        session_start();
+
+        $pass_info=array($_POST['new'],$_SESSION['id_usr']);
+        $this->model->resetpass($pass_info);
+    }
 	public function action()
 	{
 		$action="login";
@@ -398,6 +409,8 @@ class ctrl
 			case 'Module_delete':$this->ModuleDelAction();break;
 			case 'Module_edit':$this->ModuleEditAction();break;
 			case 'UpdateModule':$this->ModuleUpdateAction();break;
+            case 'profile' : $this->profileAction(); break;
+            case 'resetpass' : $this->resetpassAction(); break;
 		}
 	}
 }
