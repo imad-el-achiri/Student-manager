@@ -183,6 +183,48 @@ class model
         $query=$this->db->prepare("SET foreign_key_checks = 1");
         $query->execute();
 	}
+	public function user_update($info,$v,$id){
+        if($v==1 or $v=='1'){
+$query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\",prenom=\"$info[0]\",Genre=\"$info[2]\",num=$info[5],adr=\"$info[6]\"" ;
+        $image=",photo_personnel=\"$info[7]\"";$classe=",id_cls=$info[3]";$where=" where id_usr=$id";
+            if($info[7]!=0){$query1.=$image;}
+            if($info[3]!=0){$query1.=$classe;}
+            $query1.=$where;
+            print_r($query1);
+            $query=$this->db->prepare($query1);
+            $query->execute();}
+
+        if($v==2 or $v=='2'){
+        print_r($info[3]);
+
+$query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\", prenom=\"$info[0]\", Genre = \"$info[2]\", num=$info[5],adr=\"$info[6]\"";
+            $image=",photo_personnel=\"$info[7]\"";$fonction=",fonction=\"$info[3]\"";$where=" where id_usr=$id";
+            print_r($fonction);
+            #$query1.=$fonction;
+            if($info[7]!=0){$query1.=$image;}
+            if($info[3]==0){$query1.=$fonction;}      
+            $query1.=$where;
+            print_r($query1);
+
+            $query=$this->db->prepare($query1);
+            $query->execute();
+        }
+}
+    public function ancAdd($anc_info)
+	{
+		$query=$this->db->prepare('insert into annonce(objet,id_cls,annonce,photo) values(?,?,?,?)');
+		$query->execute($anc_info);
+	}
+	public function annonces(){
+        $query=$this->db->prepare("select * from annonce");
+        $query->execute();
+        return $query->fetchall();
+	}
+	public function moduleduprof($id){
+        $query=$this->db->prepare("select * from module where id_usr=?");
+        $query->execute($id);
+        return $query->fetchall();
+    }
 }
 
 ?>

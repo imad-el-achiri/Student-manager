@@ -335,7 +335,7 @@ class ctrl
 	}	
 	public function absform2Action()
 	{
-		$users=$this->model->AllStudents();
+		$users=$this->model->AllUsers(1);
 		$l=count($users);
 		$timeinfo=array($_POST['dtabs'],$_POST['debut'],$_POST['fin']);
         require "Vabsenceform2.php";
