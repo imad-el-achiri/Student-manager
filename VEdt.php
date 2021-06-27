@@ -32,10 +32,9 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Add Department</h3>
+								<h3 class="page-title">Emploi du temps</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="departments.html">Department</a></li>
-									<li class="breadcrumb-item active">Add Department</li>
+									<li class="breadcrumb-item active">Visualisation</li>
 								</ul>
 							</div>
 						</div>

@@ -37,15 +37,7 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Departments</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Departments</li>
-								</ul>
-							</div>
-							<div class="col-auto text-right float-right ml-auto">
-								<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-								<a href="add-department.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+								<h3 class="page-title">Classes</h3>
 							</div>
 						</div>
 					</div>
@@ -125,9 +117,6 @@
 				</div>
 
 				<!-- Footer -->
-				<footer>
-					<p>Copyright © 2021-2022 Imad-prods.</p>					
-				</footer>
 				<!-- /Footer -->
 				
 			</div>

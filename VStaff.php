@@ -31,10 +31,6 @@
 						<div class="row align-items-center">
 							<div class="col">
 								<h3 class="page-title">Professeurs et Personnel</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Students</li>
-								</ul>
 							</div>
 							<!--<div class="col-auto text-right float-right ml-auto">
 								<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>

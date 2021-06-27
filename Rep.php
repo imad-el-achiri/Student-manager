@@ -1796,16 +1796,16 @@ static
 					<!-- User Menu -->
 					<li class="nav-item dropdown has-arrow">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img class="rounded-circle" src="./html-template/assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+							<span class="user-img"><img class="rounded-circle" src="<?php echo './images/'.$_SESSION['info']['photo_personnel'];?>" width="42" height="42" alt="Displaying error"></span>
 						</a>
 						<div class="dropdown-menu">
 							<div class="user-header">
 								<div class="avatar avatar-sm">
-									<img src="./html-template/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+									<img src="<?php echo './images/'.$_SESSION['info']['photo_personnel'];?>" alt="User Image" class="avatar-img rounded-circle">
 								</div>
 								<div class="user-text">
-									<h6>Ryan Taylor</h6>
-									<p class="text-muted mb-0">Administrator</p>
+									<h6><?php echo $_SESSION['info']['nom']." ".$_SESSION['info']['prenom'];?></h6>
+									<p class="text-muted mb-0"><?php echo $_SESSION['info']['fonction'];?></p>
 								</div>
 							</div>
 							<a class="dropdown-item" href="ctrl.php?action=profile">My Profile</a>

@@ -49,7 +49,7 @@
 								<div class="row align-items-center">
 									<div class="col-auto profile-image"> 
 										<a href="#">
-												<img class="rounded-circle" alt="User Image" src="<?php  echo "./images/".$_SESSION["info"]["photo_personnel"];?>">
+												<img class="rounded-circle" width="55" height="55" alt="User Image" src="<?php echo './images/'.$_SESSION['info']['photo_personnel'];?>">
 										</a>
 									</div>
 									<div class="col ml-md-n2 profile-user-info">

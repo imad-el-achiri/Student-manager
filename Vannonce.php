@@ -42,10 +42,9 @@
 						<div class="row align-items-center">
 							<div class="col">
 								<h3 class="page-title">Annonces</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Annonces</li>
-								</ul>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active">Visualisation</li>
+                </ul>
 							</div>
 						</div>
 					</div>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Departments</title>
+        <title>Uni Stu</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" href="./html-template/assets/img/favicon.png">
@@ -37,15 +37,7 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Departments</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Departments</li>
-								</ul>
-							</div>
-							<div class="col-auto text-right float-right ml-auto">
-								<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
-								<a href="add-department.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+								<h3 class="page-title">Modules</h3>
 							</div>
 						</div>
 					</div>
