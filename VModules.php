@@ -28,7 +28,7 @@
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-			<?php include "Rep.html";?>
+			<?php include "Rep.php";?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -123,9 +123,6 @@
 				</div>
 
 				<!-- Footer -->
-				<footer>
-					<p>Copyright © 2021-2022 Imad-prods.</p>					
-				</footer>
 				<!-- /Footer -->
 				
 			</div>

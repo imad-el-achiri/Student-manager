@@ -99,7 +99,7 @@
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 		
-		<?php include "Rep.html";?>
+		<?php include "Rep.php";?>
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <title>Preskool - Students</title>
+        <title>Uni-Stu</title>
 		<!-- Favicon -->
         <link rel="shortcut icon" href="./html-template/assets/img/favicon.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&display=swap">
@@ -20,7 +20,7 @@
     <body>
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-        	<?php require 'Rep.html';?>
+        	<?php require 'Rep.php';?>
 			<!-- Header 
             <div class="header"> -->
 			<!-- Page Wrapper -->
@@ -36,10 +36,10 @@
 									<li class="breadcrumb-item active">Students</li>
 								</ul>
 							</div>
-							<div class="col-auto text-right float-right ml-auto">
+							<!--<div class="col-auto text-right float-right ml-auto">
 								<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
 								<a href="./html-template/add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
-							</div>
+							</div>-->
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -104,8 +104,11 @@
 													echo "<td><a href=".'"tel:'."$s[9]".'">'."$s[9]</a></td>
 													<td>$s[10]</td>
 													<td class='text-right'>
-														<div class='actions'>
-															<a href='./html-template/edit-student.html' class='btn btn-sm bg-success-light mr-2'>
+																<div class='actions'>";
+													if($v==1) { echo "
+															<a href='ctrl.php?action=user_edit&id=$s[0]&v=1' class='btn btn-sm bg-success-light mr-2'>";}
+															if($v==2) { echo "
+															<a href='ctrl.php?action=user_edit&id=$s[0]&v=2' class='btn btn-sm bg-success-light mr-2'>";} echo "
 																<i class='fas fa-pen'></i>
 															</a>
 															<a href='#' class='btn btn-sm bg-danger-light' data-toggle='modal' data-target=\"#exampleModalCenter$s[0]\">
@@ -125,9 +128,6 @@
 					</div>
 				</div>					
 				<!-- Footer -->
-				<footer>
-					<p>Copyright © 2020 Dreamguys.</p>					
-				</footer>
 				<!-- /Footer -->				
 			</div>
 			<!-- /Page Wrapper -->

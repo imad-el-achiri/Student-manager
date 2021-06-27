@@ -30,7 +30,7 @@
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		<?php include "Rep.html";?>
+		<?php include "Rep.php";?>
 		
 			<!-- Page Wrapper -->
 			
@@ -46,9 +46,6 @@
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
 									<li class="breadcrumb-item active">Annonces</li>
 								</ul>
-							</div>
-							<div class="col-auto text-right float-right ml-auto">
-								<a href="add-events.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
 							</div>
 						</div>
 					</div>

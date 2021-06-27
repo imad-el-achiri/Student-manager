@@ -19,17 +19,17 @@
     <body>
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-			<?php include "Rep.html";?>
+			<?php include "Rep.php";?>
             <div class="page-wrapper">
                 <div class="content container-fluid">
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Ajoutée un(e) étudiant(e)</h3>
+								<h3 class="page-title">Ajouter un(e) étudiant(e)</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="./html-template/students.html">Etudiants</a></li>
-									<li class="breadcrumb-item active">Ajouté</li>
+									<li class="breadcrumb-item active">Ajouter</li>
 								</ul>
 							</div>
 						</div>
@@ -46,7 +46,7 @@
 											</div>
 											<div class="col-12 col-sm-6">  
 												<div class="form-group">
-													<label>Prenom</label>
+													<label>Prénom</label>
 													<input type="text" class="form-control" name="PR">
 												</div>
 											</div>

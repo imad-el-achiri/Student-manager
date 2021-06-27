@@ -25,8 +25,8 @@ class model
         $query->execute();
         return $query->fetch();
 	}
-	public function droits($email){
-        $query=$this->db->prepare("select * from droits where id_usr='$email'");
+	public function droits($id){
+        $query=$this->db->prepare("select * from droits where id_user=$id");
         $query->execute();
         return $query->fetch();
 	}
@@ -82,12 +82,13 @@ class model
 	{
 		$query=$this->db->prepare('insert into users_Al_Khawarizmi(fonction,prenom,nom,Genre,id_cls,E_mail,num,adr,photo_personnel) values("Etudiant",?,?,?,?,?,?,?,?)');
 		$query->execute($etud_info);
+		
 	}	
 	public function staffAdd($staff_info)
 	{
 		$query=$this->db->prepare('insert into users_Al_Khawarizmi(fonction,prenom,nom,Genre,id_cls,E_mail,num,adr,photo_personnel) values(?,?,?,?,2,?,?,?,?)');
 		$query->execute($staff_info);
-		print_r($staff_info);
+		//print_r($staff_info);
 	}	
 	public function droitAdd($droit_info)
 	{
@@ -185,26 +186,26 @@ class model
 	}
 	public function user_update($info,$v,$id){
         if($v==1 or $v=='1'){
-$query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\",prenom=\"$info[0]\",Genre=\"$info[2]\",num=$info[5],adr=\"$info[6]\"" ;
+$query1="UPDATE users_Al_Khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\",prenom=\"$info[0]\",Genre=\"$info[2]\",num=$info[5],adr=\"$info[6]\"" ;
         $image=",photo_personnel=\"$info[7]\"";$classe=",id_cls=$info[3]";$where=" where id_usr=$id";
             if($info[7]!=0){$query1.=$image;}
             if($info[3]!=0){$query1.=$classe;}
             $query1.=$where;
-            print_r($query1);
+           // print_r($query1);
             $query=$this->db->prepare($query1);
             $query->execute();}
 
         if($v==2 or $v=='2'){
         print_r($info[3]);
 
-$query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\", prenom=\"$info[0]\", Genre = \"$info[2]\", num=$info[5],adr=\"$info[6]\"";
+$query1="UPDATE users_Al_Khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\", prenom=\"$info[0]\", Genre = \"$info[2]\", num=$info[5],adr=\"$info[6]\"";
             $image=",photo_personnel=\"$info[7]\"";$fonction=",fonction=\"$info[3]\"";$where=" where id_usr=$id";
-            print_r($fonction);
+            //print_r($fonction);
             #$query1.=$fonction;
             if($info[7]!=0){$query1.=$image;}
             if($info[3]==0){$query1.=$fonction;}      
             $query1.=$where;
-            print_r($query1);
+            //print_r($query1);
 
             $query=$this->db->prepare($query1);
             $query->execute();
@@ -231,6 +232,11 @@ $query1="UPDATE users_al_khawarizmi SET E_mail=\"$info[4]\",nom=\"$info[1]\", pr
         
         
         $query->execute($pass_info);
+    }
+    public function one_user($id_user){
+        $query=$this->db->prepare("select * from users_Al_Khawarizmi where id_usr=$id_user");
+        $query->execute();
+        return $query->fetch();
     }
 }
 

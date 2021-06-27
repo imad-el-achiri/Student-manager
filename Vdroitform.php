@@ -88,7 +88,7 @@
     <body>
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-			<?php include "Rep.html";?>
+			<?php include "Rep.php";?>
             <div class="page-wrapper">
                 <div class="content container-fluid">
 					<!-- Page Header -->

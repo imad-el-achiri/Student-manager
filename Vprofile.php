@@ -24,7 +24,7 @@
 	
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
-		<?php include "Rep.html";?>
+		<?php include "Rep.php";?>
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
                 <div class="content container-fluid">
@@ -49,7 +49,7 @@
 								<div class="row align-items-center">
 									<div class="col-auto profile-image"> 
 										<a href="#">
-											<img class="rounded-circle" alt="User Image" src="<?php  print_r("./images/".$_SESSION['info']['photo_personnel']."jpeg");?>">
+												<img class="rounded-circle" alt="User Image" src="<?php  echo "./images/".$_SESSION["info"]["photo_personnel"];?>">
 										</a>
 									</div>
 									<div class="col ml-md-n2 profile-user-info">

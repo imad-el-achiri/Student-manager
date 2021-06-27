@@ -10,11 +10,6 @@ class ctrl
 	public function LoginAction(){
         require 'VLogin.php';
 	}
-	public function allMaterialsAction()
-	{
-		$materials=$this->model->allMaterials();
-		require 'VAllMaterials.php';
-	}
 	public function verifAction(){
         $LOGIN=array($_POST['username'],$_POST['pass']);
         $res=$this->model->verif($LOGIN);
@@ -27,13 +22,17 @@ class ctrl
             //$_SESSION['pass']=$_POST["pass"];
             $info=$this->model->infos($_POST['username']);
             $droits=$this->model->droits($info['id_usr']);
-            echo $droits;
-            echo $info['id_usr'];
+            //echo $droits;
+            //echo $info['id_usr'];
             $_SESSION['info']=$info;
             $_SESSION['droits']=$droits;
+            if($_SESSION['info']['fonction']=='Etudiant'){
+                $_SESSION['droits']=array("edt"=>0,"annonce"=>0,"module"=>0,"creer_classe"=>0,"creer_compte"=>0,"modif_droits"=>0);
+            }
             //print_r($_SESSION['info']);
-            //print_r($_SESSION['droits']);
-            require 'VClasses.php';
+            //echo "<br> Droits : <br>";
+        //print_r($_SESSION['droits']);
+         require 'VClasses.php';
         }
 	}
 	public function ClassesAction()
