@@ -22,30 +22,22 @@ class ctrl
         }
         else{
             session_start();
-            //$_SESSION['email']=$_POST['username'];
-            //$_SESSION['pass']=$_POST["pass"];
             $info=$this->model->infos($_POST['username']);
             $droits=$this->model->droits($info['id_usr']);
-            //echo $droits;
-            //echo $info['id_usr'];
             $_SESSION['info']=$info;
             $_SESSION['droits']=$droits;
             if($_SESSION['info']['fonction']=='Etudiant'){
                 $_SESSION['droits']=array("edt"=>0,"annonce"=>0,"module"=>0,"creer_classe"=>0,"creer_compte"=>0,"modif_droits"=>0);
             }
-            //print_r($_SESSION['info']);
-            //echo "<br> Droits : <br>";
-        //print_r($_SESSION['droits']);
-         //require 'VClasses.php';
-         header("Location: ctrl.php?action=profile");
+            header("Location: ctrl.php?action=profile");
         }
 	}
 	
 	public function profileAction(){
+	    session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
-        session_start();
         require 'Vprofile.php';
     }
     
@@ -60,6 +52,7 @@ class ctrl
 	
 	public function ClassesAction()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -70,15 +63,17 @@ class ctrl
 	
 	public function ClassAddAction()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
 		$class_info=array($_POST['NC']." ".$_POST['AC'],$_POST['SA'],$_POST['NE'],$_POST['DC']);
 		$this->model->ClassAdd($class_info);
-
+        header("Location: ctrl.php?action=classes");
 	}
 	
 	public function ClasseChooseAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -88,6 +83,7 @@ class ctrl
 	}
 	
 	public function ClassFormAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -95,6 +91,7 @@ class ctrl
 	}
 	
 	public function ClasseEditAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -103,24 +100,29 @@ class ctrl
 	}
 	
 	public function ClasseUpdateAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
         $AC=$_POST['AC'];
         $class_info=array($_POST['NC']." ".$_POST['AC'],$_POST['SA'],$_POST['NE'],$_POST['DC'],$_GET['id']);
 		$this->model->classe_update($class_info,$AC);
+		header("Location: ctrl.php?action=classes");
 	}
 	
 	public function ClasseDeleteAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
         $this->model->classe_del($_GET['id']);
+        header("Location: ctrl.php?action=classes");
 	}
 	
 	//EDT
 	
 	public function EdtFormAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -130,6 +132,7 @@ class ctrl
 	}
 	
 	public function AddEdtAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -150,9 +153,11 @@ class ctrl
         setlocale(LC_TIME, "fr_FR.utf8",'fra');
         $info=array($id_cls,$link,strftime('%A, %d/%m/%Y à %H:%M'));
         $this->model->AddEdt($info);
+        header("Location: ctrl.php?action=Sh_Edt");
 	}
 	
 	public function EdtShowAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -166,6 +171,7 @@ class ctrl
 	//Create users
 	
 	public function etudFormAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -176,6 +182,7 @@ class ctrl
 	
 	public function etudAddAction()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -207,6 +214,7 @@ class ctrl
 	}	
 
 	public function staffFormAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -217,6 +225,7 @@ class ctrl
 	
 	public function staffAddAction()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -250,6 +259,7 @@ class ctrl
 
 	public function droitAddAction()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -270,6 +280,7 @@ class ctrl
 	
 	
 	public function staffViewAction(){
+      session_start();
       if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -279,15 +290,17 @@ class ctrl
 	}
 	
 	public function UserDeleteAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
         $id=$_GET['id_user'];
         $this->model->UserDelete($id);
-        header("Location: ctrl.php?action=staff_view");
+        header("Location: ctrl.php?action=staff_view&v=1");
 	}
 
 	public function userEditAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -301,6 +314,7 @@ class ctrl
 	}
 	
 	public function userUpdateAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -335,7 +349,7 @@ class ctrl
 		if($v==2){
 		$user_info=array($_POST['PR'],$_POST['NOM'],$_POST['GE'],$_POST['FO'],$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
 		$this->model->user_update($user_info,$v,$id_user);}
-        header("Location: ctrl.php?action=staff_view");
+        header("Location: ctrl.php?action=staff_view&v=$v");
 		#$id_cls=$this->model->classe($_POST['cls'])['id_cls'];
 		#$this->model->classe_update($user_info,$IMAGES,$fct,$cls);
 	}
@@ -345,6 +359,7 @@ class ctrl
 	//Modules
 	
 	public function moduleFormAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -356,6 +371,7 @@ class ctrl
 	}
 	
 	public function moduleAddAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -365,6 +381,7 @@ class ctrl
 	}
 	
 	public function ModulesViewAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -379,6 +396,7 @@ class ctrl
 	}
 	
 	public function ModuleDelAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -388,6 +406,7 @@ class ctrl
 	}
 	
 	public function ModuleEditAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -404,15 +423,16 @@ class ctrl
         $prf=$this->model->AllUsers(3);
         $l2=count($prf);
         require 'VModuleEdit.php';
-        header("Location: ctrl.php?action=Module_view");
 	}
 	
 	public function ModuleUpdateAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
         $infos=array($_POST['nom'],$_POST['prf'],$_POST['cls']);
         $this->model->UpdateModule($infos,$_GET['id']);
+        header("Location: ctrl.php?action=Module_view");
 	}
 	
 	
@@ -421,6 +441,7 @@ class ctrl
 	
 	public function ancAddAction()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -449,9 +470,11 @@ class ctrl
 		$anc_info=array($_POST['OB'],$id_cls,$_POST['CO'],$file_name);
 		print_r($anc_info);
 		$this->model->ancAdd($anc_info);
+		header("Location: ctrl.php?action=ancshow");
 	}
 	
 	public function ancFormAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -462,6 +485,7 @@ class ctrl
 	}
 	
 	public function ancshowAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -476,6 +500,7 @@ class ctrl
 	
 	public function absform2Action()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -486,6 +511,7 @@ class ctrl
 	}
 	public function absform1Action()
 	{
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
@@ -497,6 +523,7 @@ class ctrl
 	}
 	
     public function resetpassAction(){
+        session_start();
         if(!isset($_SESSION['info'])){
             header("Location: ctrl.php?action=login");
         }
