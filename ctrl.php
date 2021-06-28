@@ -211,6 +211,7 @@ class ctrl
 		$etud_info=array($_POST['PR'],$_POST['NOM'],$_POST['GE'],$id_cls,$_POST['EM'],$_POST['TEL'],$_POST['ADR'],$file_name);
 		//print_r($etud_info);
 		$this->model->etudAdd($etud_info);
+		header("Location: ctrl.php?action=staff_view&v=1");
 	}	
 
 	public function staffFormAction(){
@@ -273,6 +274,7 @@ class ctrl
 		}
 		$droit_info=array($_POST['cls'],$_POST['etd'],$_POST['anc'],$_POST['edt'],$_POST['mdl'],$_POST['note'],$id_user[0]);
 		$this->model->droitAdd($droit_info);
+		header("Location: ctrl.php?action=staff_view&v=2");
 	}
 	
 	
