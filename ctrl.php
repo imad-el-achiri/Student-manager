@@ -153,7 +153,7 @@ class ctrl
         setlocale(LC_TIME, "fr_FR.utf8",'fra');
         $info=array($id_cls,$link,strftime('%A, %d/%m/%Y à %H:%M'));
         $this->model->AddEdt($info);
-        header("Location: ctrl.php?action=Sh_Edt");
+        header("Location: ctrl.php?action=edt_form");
 	}
 	
 	public function EdtShowAction(){
@@ -297,8 +297,9 @@ class ctrl
             header("Location: ctrl.php?action=login");
         }
         $id=$_GET['id_user'];
+        $v=$_GET['v'];
         $this->model->UserDelete($id);
-        header("Location: ctrl.php?action=staff_view&v=1");
+        header("Location: ctrl.php?action=staff_view&v=$v");
 	}
 
 	public function userEditAction(){

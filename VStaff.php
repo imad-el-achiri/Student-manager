@@ -30,7 +30,14 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Professeurs et Personnel</h3>
+								<?php
+								if($v==1){
+									echo "<h3 class='page-title'>Etudiants</h3>";
+								}
+								if($v==2){
+									echo "<h3 class='page-title'>Professeurs et Personnel</h3>";
+								}
+								?>
 							</div>
 							<!--<div class="col-auto text-right float-right ml-auto">
 								<a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
@@ -77,7 +84,7 @@
 						      </div>
 						      <div class="modal-footer">
 						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-						        <a href="'."ctrl.php?action=user_delete&id_user=$s[0]".'">'.'<button type="button" class="btn btn-primary">Oui</button></a>';echo "
+						        <a href="'."ctrl.php?action=user_delete&id_user=$s[0]&v=$v".'">'.'<button type="button" class="btn btn-primary">Oui</button></a>';echo "
 						      </div>
 						    </div>
 						  </div>
